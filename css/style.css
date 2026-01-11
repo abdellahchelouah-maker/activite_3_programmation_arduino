@@ -1,0 +1,136 @@
+.images-materiel {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 12px;
+  justify-content: start;
+  align-items: center;
+  margin-top: 0.8rem;
+}
+
+.images-materiel img {
+  height: 120px;   /* hauteur identique */
+  width: auto;     /* largeur proportionnelle */
+  object-fit: contain;
+}
+
+.image-cadre {
+  display: flex;
+  justify-content: center;   /* centre horizontalement l’image */
+  margin: 30px 0;            /* espace au-dessus et en dessous */
+}
+
+.image-cadre img {
+  max-width: 100%;           /* image responsive */
+  height: auto;              /* pas de déformation */
+  border: 2px solid #3498db; /* cadre */
+  border-radius: 8px;        /* coins arrondis */
+  padding: 8px;              /* espace entre image et cadre */
+  background: white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+  
+.navigation-cours {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 15px 0 25px 0;
+  padding: 15px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navigation-cours a {
+  background: #3498db;
+  color: white;
+  padding: 10px 18px;
+  text-decoration: none;
+  border-radius: 20px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.navigation-cours a:hover {
+  background: #2980b9;
+  transform: translateY(-2px);
+}
+
+.navigation-cours a.active {
+  background: #2c3e50;
+}
+
+pre {
+  background: #f4f4f4;
+  padding: 12px;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+code {
+  font-family: Consolas, monospace;
+  font-size: 0.95em;
+}
+
+.navigation-cours a {
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin-right: 8px;
+  transition: all 0.3s;
+  background: #3498db;    /* couleur des boutons classiques */
+  color: white;
+  font-weight: bold;
+}
+
+.navigation-cours a.active {
+  background: #2c3e50;
+}
+
+/* Boutons ressources distincts */
+.navigation-cours a.btn-ressource {
+  background: #2ecc71;    /* vert distinct */
+  color: white;
+  border: 2px solid #27ae60;
+}
+
+.navigation-cours a.btn-ressource:hover {
+  background: #27ae60;
+  transform: translateY(-2px);
+}
+
+
+.navigation-ressources {
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-between; /* un bouton à gauche, un à droite */
+}
+
+.navigation-ressources a {
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: all 0.3s;
+  color: white;
+}
+
+.btn-ressource-prev {
+  background: #f39c12; /* orange pour le bouton "précédent" */
+  border: 2px solid #e67e22;
+}
+
+.btn-ressource-prev:hover {
+  background: #e67e22;
+  transform: translateY(-2px);
+}
+
+.btn-ressource-next {
+  background: #2ecc71; /* vert pour le bouton "suivant" */
+  border: 2px solid #27ae60;
+}
+
+.btn-ressource-next:hover {
+  background: #27ae60;
+  transform: translateY(-2px);
+}

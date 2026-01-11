@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Séquence D - Electronique et systèmes intelligents - Activite 3</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { 
+      font-family: Arial, sans-serif; 
+      line-height: 1.5; 
+      max-width: 800px; 
+      margin: 0 auto; 
+      padding: 20px; 
+      background: #f5f5f5;
+    }
+    header { 
+      background: linear-gradient(135deg, #2c3e50, #3498db); 
+      color: white; 
+      padding: 30px; 
+      border-radius: 10px; 
+      text-align: center; 
+      margin-bottom: 30px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    h1 { margin: 0; font-size: 2.2em; }
+    h2 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px; }
+    h3 { color: #34495e; }
+    .competences { 
+      background: white; 
+      padding: 20px; 
+      border-radius: 8px; 
+      margin: 20px 0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .competence { 
+      background: #ecf0f1; 
+      padding: 15px; 
+      margin: 10px 0; 
+      border-left: 5px solid #3498db; 
+      border-radius: 5px;
+    }
+    .materiel { 
+      background: white; 
+      padding: 20px; 
+      border-radius: 8px; 
+      margin: 20px 0;
+    }
+    ul { padding-left: 20px; }
+    .problematique { 
+      background: linear-gradient(135deg, #e8f5e8, #c8e6c8); 
+      padding: 25px; 
+      border-radius: 10px; 
+      margin: 25px 0;
+      border-left: 6px solid #27ae60;
+    }
+    .organisation { 
+      background: #fff3cd; 
+      padding: 20px; 
+      border-radius: 8px; 
+      margin: 20px 0;
+      border-left: 5px solid #ffc107;
+    }
+    .objectifs { 
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+      color: white; 
+      padding: 25px; 
+      border-radius: 10px; 
+      margin: 30px 0;
+    }
+    .etape { 
+      background: white; 
+      padding: 20px; 
+      margin: 15px 0; 
+      border-radius: 8px; 
+      border-left: 5px solid #3498db;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .liens { 
+      display: flex; 
+      gap: 15px; 
+      flex-wrap: wrap; 
+      margin-top: 20px;
+    }
+    .lien { 
+      background: #3498db; 
+      color: white; 
+      padding: 12px 20px; 
+      text-decoration: none; 
+      border-radius: 25px; 
+      font-weight: bold;
+      transition: all 0.3s;
+    }
+    .lien:hover { background: #2980b9; transform: translateY(-2px); }
+    footer { 
+      text-align: center; 
+      margin-top: 40px; 
+      padding: 20px; 
+      color: #7f8c8d;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Séquence D - Electronique et systèmes intelligents - Activite 3</h1>
+  <h2>"Quels sont les composants qui rendent le COLIBRI intelligent ?"</h2>
+  <h2>"Comment est programmé le COLOBRI ?"</h2>
+  <p><strong>3 Algorithmique Arduino</strong> </p>
+</header>
+
+<section class="competences">
+  <h2>🎯 Compétences visées</h2>
+  <div class="competence">
+    <strong>C03</strong> - Être capable d'identifier les fonctions des différents constituants de la chaîne d'information.
+  </div>
+  <div class="competence">
+    <strong>C03</strong> - Être capable d'identifier les entrées/sorties du système physique dans la perspective de l'écriture de l'algorithme.
+  </div>
+  <div class="competence">
+    <strong>C03</strong> - Être capable d'interpréter/comprendre une partie du programme et les E/S.
+  </div>
+  <div class="competence">
+    <strong>C04</strong> - Être capable d'identifier la structure d'un programme.
+  </div>
+</section>
+
+<section class="materiel">
+  <h2>🛠️ Matériels et ressources</h2>
+  <ul>
+    <li>⚡ <strong>Logiciel Arduino</strong></li>
+    <li>🖥️ <strong>Carte Arduino + platine Grove</strong></li>
+    <li>📡 <strong>Capteurs et actionneurs Grove</strong> :
+      <ul>
+        <li>3 modules « <strong>LED</strong> » (rouge, vert, bleu)</li>
+        <li>1 module « <strong>buzzer</strong> » (dispositif piézoélectrique qui émet des sons)</li>
+        <li>2 modules « <strong>button</strong> » (boutons poussoirs)</li>
+      </ul>
+    </li>
+    <li>📄 <strong>Documents :</strong> DT-Arduino, DT-Algorigramme, DR-Algorithmique</li>
+    <li>🎥 <strong>Vidéos</strong> de découverte de l'Arduino (écouteurs recommandés)</li>
+  </ul>
+</section>
+
+<section class="problematique">
+  <h2>❓ Problématique</h2>
+  <p><em>Le Colibri est une machine qui prépare et distribue des boissons chaudes à la demande. Son système interne permet de commander une boisson, de préparer la boisson, de chauffer ou pas la boisson, de la sucrer plus ou moins en fonction de la demande du consommateur.</em></p>
+  
+  <img src="images/img3.jpg" 
+     alt="Photo du COLIBRI" 
+     style="width: 100%; 
+            max-width: 400px; 
+            height: auto; 
+            display: block; 
+            margin: 20px auto; 
+            border: 2px solid #3498db; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+
+  
+  <div style="display: flex; gap: 20px; margin-top: 20px;">
+    <div style="flex: 1;">
+      <h3>🧠 Questions clés :</h3>
+      <ul>
+        <li><strong>Quels sont les composants</strong> qui rendent le COLIBRI intelligent ?</li>
+        <li><strong>Comment est programmé</strong> le COLIBRI ?</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="organisation">
+  <h2>👥 Organisation</h2>
+  <ul>
+    <li><strong>Travail en binôme</strong></li>
+  </ul>
+  
+  <h3>📋 Rendu attendu</h3>
+  <p><strong>Le document réponse « DR-Algorithmique » complété</strong></p>
+</section>
+
+<section class="objectifs">
+  <h2>🎯 Objectif de l'activité</h2>
+  <p><strong>Durant cette activité, vous allez découvrir le logiciel et le matériel Arduino associés à une platine Grove. L'étude du fonctionnement de la machine à café COLIBRI et la simulation de certaines fonctionnalités va vous permettre de programmer les différentes structures algorithmiques. Ces dernières sont <em>la base de la programmation, quel que soit le langage utilisé</em>.</strong></p>
+</section>
+
+<section class="etape">
+  <h2>🚀 1. Structure du système</h2>
+  <p><strong>Le synoptique de la machine à café est le suivant :</strong></p>
+  <!-- Zone pour image synoptique -->
+  
+	<img src="images/img1.jpg" 
+     alt="Schéma synoptique du COLIBRI" 
+     style="width: 100%; 
+            max-width: 800px; 
+            height: auto; 
+            display: block; 
+            margin: 20px auto; 
+            border: 2px solid #3498db; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+
+  
+  
+  <h3>📝 Travail demandé :</h3>
+  <p><strong>A l'aide du synoptique ci-dessus, compléter le schéma structurel du système sur le DR-Algorithmique :</strong></p>
+  
+  <div style="background: #e8f4fd; padding: 15px; border-radius: 6px; margin: 15px 0;">
+    <ul>
+      <li><span style="color: blue; font-weight: bold;">🔵 Bleu :</span> éléments du pupitre donnant des <strong>ordres</strong> au microcontrôleur</li>
+      <li><span style="color: yellow; font-weight: bold;">🟡 Jaune :</span> éléments du pupitre donnant des <strong>informations</strong> au microcontrôleur</li>
+      <li><span style="color: green; font-weight: bold;">🟢 Vert :</span> <strong>capteurs</strong> (informations → microcontrôleur)</li>
+      <li><span style="color: red; font-weight: bold;">🔴 Rouge :</span> <strong>actionneurs</strong> (transforment l'énergie Ex: Moteur)</li>
+      <li><span style="color: hotpink; font-weight: bold;">🩷 Rose :</span> <strong>effecteurs</strong> (réalisent l'action Ex: turbine)</li>
+    </ul>
+  </div>
+</section>
+
+<section class="etape">
+  <h2>🧠 2. Le microcontrôleur - Recherche</h2>
+  <p><strong>Le COLIBRI est composé d'un microcontrôleur. Ce composant est « au centre » du système.</strong></p>
+  
+  <p><strong>A l'aide d'une recherche Internet, indiquer sur le DR-Algorithmique :</strong></p>
+  <ul>
+    <li>Qu'est-ce qu'un <strong>microcontrôleur</strong> ?</li>
+    <li>De quoi est-il <strong>composé</strong> ?</li>
+    <li>Quelle est la <strong>différence</strong> avec un microprocesseur ?</li>
+    <li><strong>Citer quelques systèmes</strong> équipés d'un microcontrôleur ?</li>
+  </ul>
+</section>
+
+<div class="liens">
+  <a href="ressources/algorigramme.html" class="lien">📚 Algorithmes</a>
+  <a href="ressources/arduino.html" class="lien">⚡ Arduino</a>
+  
+  <a href="p1-voyant.html" class="lien">1️⃣ Voyant</a>
+  <a href="p2-chaudiere.html" class="lien">2️⃣-3️⃣ Chaudière</a>
+  <a href="p4-reservoir.html" class="lien">4️⃣-5️⃣ Réservoir</a>
+  <a href="test-analogique.html" class="lien">🔢 Analogique</a>
+  <a href="pour-aller-plus-loin.html" class="lien">⭐ Plus loin</a>
+</div>
+
+
+<footer>
+  <p>© 2026 - IT+I2D - Séquence Algorithmique Arduino | Travail en binôme</p>
+</footer>
+
+</body>
+</html>

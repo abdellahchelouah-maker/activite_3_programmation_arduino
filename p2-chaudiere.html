@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Programmes 2 et 3 – Chaudière et pompe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="css/style.css">
+  
+	<style>
+    body { font-family: Arial, sans-serif; line-height: 1.4; margin: 0; padding: 0 1rem 2rem; }
+    header { background:#663300; color:white; padding:1rem; margin:0 -1rem 1rem; }
+    h1, h2, h3 { margin-top:1rem; }
+    code { background:#f4f4f4; padding:0 0.15rem; }
+    table { border-collapse: collapse; width:100%; margin:0.8rem 0; }
+    th, td { border:1px solid #ccc; padding:0.5rem; vertical-align:top; }
+    th { background:#f0f0f0; }
+    .box { border:1px solid #ccc; padding:0.8rem; margin:0.8rem 0; border-radius:4px; }
+    .exemple { background:#f9f9ff; }
+    nav a { margin-right:0.8rem; }
+	</style>
+  
+</head>
+<body>
+
+<header>
+  <h1>Programmes 2 et 3 – Chaudière et pompe</h1>
+  <p>Séquence COLIBRI – Structure Si...Alors / Si...Alors...Sinon</p>
+</header>
+<nav class="navigation-cours">
+  <a href="index.html">🏠 Accueil</a>
+  <a href="p1-voyant.html" >1️⃣ Voyant</a>
+  <a href="p2-chaudiere.html" class="active">2️⃣-3️⃣ Chaudière</a>
+  <a href="p4-reservoir.html">4️⃣-5️⃣ Réservoir</a>
+  <a href="test-analogique.html">🔢 Analogique</a>
+  <a href="pour-aller-plus-loin.html">⭐ Plus loin</a>
+
+  <!-- Boutons ressources -->
+  <a href="ressources/algorigramme.html" class="btn-ressource">📚 Algorigramme</a>
+  <a href="ressources/arduino.html" class="btn-ressource">⚡ Arduino</a>
+</nav>
+
+<!--
+<nav>
+  <a href="#situation">1. Situation</a>
+  <a href="#algorithme2">2. Programme 2 (Si...Alors)</a>
+  <a href="#code2">3. Code Arduino P2</a>
+  <a href="#algorithme3">4. Programme 3 (Si...Alors...Sinon)</a>
+  <a href="#code3">5. Code Arduino P3</a>
+</nav>
+-->
+<section id="situation">
+  <h2>1. Situation et cahier des charges</h2>
+
+  <div class="box">
+    <h3>Rôle de la chaudière</h3>
+    <p>
+      La chaudière permet de chauffer l'eau avant de préparer une boisson dans la machine COLIBRI.
+    </p>
+    <p><strong>Cahier des charges P2 :</strong> réaliser un programme qui commande la pompe d'alimentation
+      en eau si la chaudière est vide. (Capteur chaudière sur D2, pompe sur D8 – buzzer Grove)
+    </p>
+    <p><strong>Cahier des charges P3 :</strong> compléter le programme pour pouvoir arrêter la pompe
+      lorsque la chaudière est pleine, puis, dans un second temps, arrêter la pompe 2 s après que
+      le capteur soit désactivé.
+    </p>
+  </div>
+
+  <div class="box">
+    <h3>Matériel</h3>
+    <ul>
+      <li>Carte Arduino + carte Grove.</li>
+      <li>Module bouton (capteur chaudière) connecté sur D2.</li>
+      <li>Module buzzer (pompe) connecté sur D8.</li>
+    </ul>
+
+    <div class="images-materiel">
+      <img src="images/img4.jpg" alt="Carte Arduino avec carte Grove">
+      <img src="images/img5.jpg" alt="Capteur chaudière">
+      <img src="images/img6.jpg" alt="Pompe / buzzer Grove">
+    </div>
+  </div>
+
+  <p>
+    Ressources :
+    <a href="algorigramme.html#structures">Algorithmes / Algorigrammes</a> –
+    <a href="arduino-memo.html#memo">Mémo Arduino</a>
+  </p>
+</section>
+
+<section id="algorithme2">
+  <h2>2. Programme 2 – Structure Si...Alors</h2>
+
+  <div class="box">
+    <h3>Rappel – structure Si...Alors</h3>
+    <pre><code>Si condition vraie ALORS
+  instruction1
+FinSi
+    </code></pre>
+    <p class="exemple">
+      Ici : « Si la chaudière est vide ALORS démarrer la pompe d'alimentation en eau ».
+    </p>
+  </div>
+
+  <h3>2.1. Algorithme P2 à compléter</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Cahier des charges</th>
+        <th>Algorithme (pseudo-code)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          La chaudière permet de chauffer l'eau avant de préparer une boisson.
+          Réaliser un programme qui commande la pompe si la chaudière est vide.
+        </td>
+        <td>
+          Variables : capteurchaudiere, moteurpompe<br><br>
+          Si (la chaudière est vide) ALORS<br>
+          &nbsp;&nbsp;mettre le moteurpompe en marche<br>
+          FinSi
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="box">
+    <h3>2.2. Algorigramme P2</h3>
+    <p>Dessiner l'algorigramme correspondant :</p>
+    <ul>
+      <li>Début</li>
+      <li>Test : « chaudière vide ? »</li>
+      <li>Si OUI : instruction « démarrer pompe »</li>
+      <li>Si NON : ne rien faire</li>
+      <li>Fin</li>
+    </ul>
+  </div>
+</section>
+
+<section id="code2">
+  <h2>3. Programme Arduino 2 – Chaudière vide</h2>
+
+  <div class="box">
+    <h3>Correspondance algorithme ↔ Arduino</h3>
+    <ul>
+      <li>capteurchaudiere → broche D2, déclarée en <strong>INPUT</strong>.</li>
+      <li>moteurpompe → broche D8, déclarée en <strong>OUTPUT</strong>.</li>
+      <li>Test de la condition « chaudière vide » → <code>if (digitalRead(capteurchaudiere) == HIGH)</code>.</li>
+      <li>Démarrer la pompe → <code>digitalWrite(moteurpompe, HIGH);</code>.</li>
+    </ul>
+  </div>
+
+  <h3>3.1. Squelette de code P2</h3>
+
+<pre><code>int capteurchaudiere = 2;
+int moteurpompe      = 8;
+
+void setup() {
+  // déclarer capteurchaudiere en entrée
+  // déclarer moteurpompe en sortie
+}
+
+void loop() {
+  // si la chaudière est vide, démarrer la pompe
+}
+</code></pre>
+</section>
+
+<section id="algorithme3">
+  <h2>4. Programme 3 – Arrêt de la pompe</h2>
+
+  <div class="box">
+    <h3>Rappel – structure Si...Alors...Sinon</h3>
+    <pre><code>Si condition vraie ALORS
+  instruction1
+SINON
+  instruction2
+FinSi
+    </code></pre>
+    <p class="exemple">
+      Ici : « Si chaudière vide ALORS pompe ON, SINON pompe OFF ».
+    </p>
+  </div>
+</section>
+
+<section id="code3">
+  <h2>5. Programme Arduino 3 – Pompe avec arrêt</h2>
+
+<pre><code>void loop() {
+  if (digitalRead(capteurchaudiere) == HIGH) {
+    digitalWrite(moteurpompe, HIGH);
+  } else {
+    delay(2000);
+    digitalWrite(moteurpompe, LOW);
+  }
+}
+</code></pre>
+
+</section>
+
+<nav class="navigation-cours">
+  <a href="index.html">⬅ Retour à l’accueil</a>
+  <a href="p4-reservoir.html">➡ Fiche suivante</a>
+</nav>
+
+
+</body>
+</html>

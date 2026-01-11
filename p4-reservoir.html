@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Programmes 4 et 5 – Réservoir et température</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/style.css">
+  
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.4; margin: 0; padding: 0 1rem 2rem; }
+    header { background:#006699; color:white; padding:1rem; margin:0 -1rem 1rem; }
+    h1, h2, h3 { margin-top:1rem; }
+    code { background:#f4f4f4; padding:0 0.15rem; }
+    table { border-collapse: collapse; width:100%; margin:0.8rem 0; }
+    th, td { border:1px solid #ccc; padding:0.5rem; vertical-align:top; }
+    th { background:#f0f0f0; }
+    .box { border:1px solid #ccc; padding:0.8rem; margin:0.8rem 0; border-radius:4px; }
+    .exemple { background:#f9f9ff; }
+    nav a { margin-right:0.8rem; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Programmes 4 et 5 – Réservoir et température</h1>
+  <p>Séquence COLIBRI – Boucles Tant que...Faire et Répéter...Jusqu'à</p>
+</header>
+
+<nav class="navigation-cours">
+  <a href="index.html">🏠 Accueil</a>
+  <a href="p1-voyant.html">1️⃣ Voyant</a>
+  <a href="p2-chaudiere.html">2️⃣-3️⃣ Chaudière</a>
+  <a href="p4-reservoir.html" class="active">4️⃣-5️⃣ Réservoir</a>
+  <a href="test-analogique.html">🔢 Analogique</a>
+  <a href="pour-aller-plus-loin.html">⭐ Plus loin</a>
+
+  <!-- Boutons ressources -->
+  <a href="ressources/algorigramme.html" class="btn-ressource">📚 Algorigramme</a>
+  <a href="ressources/arduino.html" class="btn-ressource">⚡ Arduino</a>
+</nav>
+
+
+<!-- PROGRAMME 4 -->
+
+<section id="p4-situation">
+  <h2>Programme 4 – Réservoir d'eau</h2>
+
+  <div class="box">
+    <h3>Cahier des charges</h3>
+    <p>
+      On souhaite que le réservoir d'eau soit rempli jusqu'à son niveau haut.
+      Réaliser un programme qui active la pompe de remplissage tant que le réservoir d'eau n'est pas plein.
+    </p>
+    <ul>
+      <li>Capteur de niveau réservoir &rarr; bouton Grove sur D2 (capteurreservoir).</li>
+      <li>Pompe de remplissage &rarr; LED rouge sur D3 (remplir).</li>
+    </ul>
+  </div>
+
+  <p>
+    Ressources : <a href="algorigramme.html#structures">Boucle Tant que...Faire</a> –
+    <a href="arduino-memo.html#memo">Boucle while en Arduino</a>
+  </p>
+</section>
+
+<section id="p4-algo">
+  <h3>Algorithme P4 – Tant que...Faire</h3>
+
+  <div class="box">
+    <h4>Rappel – structure Tant que...Faire</h4>
+    <pre><code>Tant que condition vraie Faire
+  instruction1
+  instruction2
+FinTantQue
+    </code></pre>
+    <p class="exemple">
+      Ici : « Tant que le réservoir n'est pas plein, faire fonctionner la pompe de remplissage ».
+    </p>
+  </div>
+
+  <h4>Algorithme à compléter</h4>
+  <table>
+    <thead>
+      <tr>
+        <th>Cahier des charges</th>
+        <th>Algorithme (pseudo-code)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          Activer la pompe de remplissage tant que le réservoir d'eau n'est pas plein.
+        </td>
+        <td>
+          Variables : capteurreservoir, remplir<br><br>
+          Tant que (le réservoir n'est pas plein) Faire<br>
+          &nbsp;&nbsp;mettre remplir &larr; 1 (pompe ON)<br>
+          FinTantQue<br>
+          mettre remplir &larr; 0 (pompe OFF)
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="box">
+    <h4>Algorigramme P4</h4>
+    <p>
+      Dessiner l'algorigramme correspondant :
+      <ul>
+        <li>Début</li>
+        <li>Tant que « réservoir non plein ? »</li>
+        <li>&nbsp;&nbsp;Instruction « pompe ON »</li>
+        <li>FinTantQue</li>
+        <li>Instruction « pompe OFF »</li>
+        <li>Fin</li>
+      </ul>
+    </p>
+  </div>
+</section>
+
+<section id="p4-code">
+  <h3>Code Arduino P4 – while</h3>
+
+  <div class="box">
+    <h4>Correspondance algorithme ↔ Arduino</h4>
+    <ul>
+      <li>capteurreservoir &rarr; broche D2 en <strong>INPUT</strong>.</li>
+      <li>remplir &rarr; broche D3 en <strong>OUTPUT</strong>.</li>
+      <li>Condition « réservoir non plein » &rarr; test sur <code>digitalRead(capteurreservoir)</code> (à définir selon le câblage).</li>
+      <li>Boucle Tant que &rarr; <code>while (condition) { ... }</code> en Arduino.</li>
+    </ul>
+  </div>
+
+  <h4>Squelette de code</h4>
+  <p>Compléter en choisissant la condition de la boucle.</p>
+
+<pre><code>int capteurreservoir = 2;  // bouton niveau réservoir sur D2
+int remplir          = 3;  // LED rouge sur D3 (pompe)
+
+void setup() {
+  pinMode(capteurreservoir, INPUT);
+  pinMode(remplir, OUTPUT);
+}
+
+void loop() {
+  // A faire  : tant que le réservoir n'est pas plein, activer la pompe
+  // while (          ) {
+  //   digitalWrite(remplir, HIGH);
+  // }
+
+  // ensuite, arrêter la pompe
+  // digitalWrite(remplir, LOW);
+}
+</code></pre>
+
+  <details>
+    <summary>Coup de pouce P4</summary>
+    <p>
+      Utiliser une condition du type <code>while (digitalRead(capteurreservoir) == LOW)</code>
+      si le bouton passe à HIGH quand le niveau haut est atteint.
+    </p>
+  </details>
+
+  <details>
+    <summary>Correction possible P4 (exemple)</summary>
+<pre><code>void loop() {
+  while (digitalRead(capteurreservoir) == LOW) { // tant que réservoir non plein
+    digitalWrite(remplir, HIGH);                // pompe ON
+  }
+  digitalWrite(remplir, LOW);                   // réservoir plein : pompe OFF
+}
+</code></pre>
+  </details>
+</section>
+
+<!-- PROGRAMME 5 -->
+
+<section id="p5-situation">
+  <h2>Programme 5 – Température de l'eau</h2>
+
+  <div class="box">
+    <h3>Cahier des charges</h3>
+    <p>
+      On souhaite que la température de l'eau reste constante.
+      Si la température basse est atteinte, chauffer l'eau tant que la température haute n'est pas atteinte.
+      Penser à arrêter le chauffage à la fin.
+    </p>
+    <ul>
+      <li>Température basse &rarr; bouton Grove sur D2 (temp_bas).</li>
+      <li>Température haute &rarr; bouton Grove sur D4 (temp_haut).</li>
+      <li>Chauffage &rarr; LED rouge sur D3 (chauffer).</li>
+    </ul>
+  </div>
+
+  <p>
+    Ressources : <a href="algorigramme.html#structures">Répéter...Jusqu'à / do...while</a> –
+    <a href="arduino-memo.html#memo">Boucle do...while en Arduino</a>
+  </p>
+</section>
+
+<section id="p5-algo">
+  <h3>Algorithme P5 – Répéter...Jusqu'à</h3>
+
+  <div class="box">
+    <h4>Rappel – structure Répéter...Jusqu'à</h4>
+    <pre><code>Répéter
+  instruction1
+  instruction2
+Jusqu'à condition vraie
+    </code></pre>
+    <p class="exemple">
+      Ici : « Répéter chauffer l'eau jusqu'à ce que la température haute soit atteinte ».
+    </p>
+  </div>
+
+  <h4>Algorithme à compléter</h4>
+  <table>
+    <thead>
+      <tr>
+        <th>Cahier des charges</th>
+        <th>Algorithme (pseudo-code)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          Si la température basse est atteinte, chauffer l'eau tant que la température haute n'est pas atteinte.
+          Arrêter le chauffage à la fin.
+        </td>
+        <td>
+          Variables : temp_bas, temp_haut, chauffer<br><br>
+          Si (temp_bas atteint) ALORS<br>
+          &nbsp;&nbsp;Répéter<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;mettre chauffer &larr; 1<br>
+          &nbsp;&nbsp;Jusqu'à (temp_haut atteint)<br>
+          &nbsp;&nbsp;mettre chauffer &larr; 0<br>
+          FinSi
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="box">
+    <h4>Algorigramme P5</h4>
+    <p>
+      Dessiner l’algorigramme :
+      <ul>
+        <li>Test initial : « temp_bas atteinte ? »</li>
+        <li>Si OUI, boucle de chauffage jusqu’à « temp_haut atteinte ? »</li>
+        <li>À la fin, instruction « chauffer OFF »</li>
+      </ul>
+    </p>
+  </div>
+</section>
+
+<section id="p5-code">
+  <h3>Code Arduino P5 – do...while</h3>
+
+  <div class="box">
+    <h4>Correspondance algorithme ↔ Arduino</h4>
+    <ul>
+      <li>temp_bas &rarr; D2 en INPUT, temp_haut &rarr; D4 en INPUT.</li>
+      <li>chauffer &rarr; D3 en OUTPUT.</li>
+      <li>Structure Répéter...Jusqu'à &rarr; <code>do { ... } while (condition);</code>.</li>
+    </ul>
+  </div>
+
+  <h4>Squelette de code</h4>
+
+<pre><code>int temp_bas  = 2;  // bouton température basse sur D2
+int temp_haut = 4;  // bouton température haute sur D4
+int chauffer  = 3;  // LED rouge sur D3 (chauffage)
+
+void setup() {
+  pinMode(temp_bas, INPUT);
+  pinMode(temp_haut, INPUT);
+  pinMode(chauffer, OUTPUT);
+}
+
+void loop() {
+  // Si la température basse est atteinte
+  if ( /* A faire  : test temp_bas */ ) {
+    // A faire  : chauffer jusqu'à atteindre la température haute
+    // do {
+    //   digitalWrite(chauffer, HIGH);
+    // } while ( /* A faire  : condition température haute non atteinte */ );
+
+    // A faire  : arrêter le chauffage
+    // digitalWrite(chauffer, LOW);
+  }
+}
+</code></pre>
+
+  <details>
+    <summary>Coup de pouce P5</summary>
+    <p>
+      Utiliser <code>digitalRead(temp_bas) == HIGH</code> pour détecter la température basse,
+      et <code>digitalRead(temp_haut) == LOW</code> dans la condition du <code>do...while</code>
+      si le bouton passe à HIGH quand la température haute est atteinte.
+    </p>
+  </details>
+
+  <details>
+    <summary>Correction possible P5 (exemple)</summary>
+<pre><code>void loop() {
+  if (digitalRead(temp_bas) == HIGH) {         // température basse atteinte
+    do {
+      digitalWrite(chauffer, HIGH);           // chauffer
+    } while (digitalRead(temp_haut) == LOW);   // jusqu'à température haute
+
+    digitalWrite(chauffer, LOW);              // arrêter le chauffage
+  }
+}
+</code></pre>
+  </details>
+
+  <p>
+    Ressources : 
+    <a href="ressources/algorigramme.html#structures">Structures de répétition</a> –
+    <a href="ressources/arduino-memo.html#memo">while / do...while en Arduino</a>
+  </p>
+</section>
+
+<nav class="navigation-cours">
+  <a href="index.html">⬅ Retour à l’accueil</a>
+  <a href="p4-reservoir.html">➡ Fiche suivante</a>
+</nav>
+
+</body>
+</html>

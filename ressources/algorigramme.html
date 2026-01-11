@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Ressource – Algorithmes et algorigrammes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.4; margin: 0; padding: 0 1rem 2rem; }
+    header { background:#004c7f; color:white; padding:1rem; margin:0 -1rem 1rem; }
+    h1, h2, h3 { margin-top:1rem; }
+    code { background:#f4f4f4; padding:0 0.15rem; }
+    .box { border:1px solid #ccc; padding:0.8rem; margin:0.8rem 0; border-radius:4px; }
+    table { border-collapse: collapse; width:100%; margin:0.8rem 0; }
+    th, td { border:1px solid #ccc; padding:0.5rem; vertical-align:top; }
+    th { background:#f0f0f0; }
+    .exemple { background:#f9f9ff; }
+    nav a { margin-right:0.8rem; }
+  </style>
+</head>
+
+<body>
+
+
+
+<header>
+  <h1>Algorithmes et algorigrammes</h1>
+  <p>Ressource pour la séquence Arduino / COLIBRI</p>
+</header>
+
+<nav class="navigation-ressources">
+  <a href="../p4-reservoir.html" class="btn-ressource-prev">⬅ Fiche précédente</a>
+  <a href="arduino.html" class="btn-ressource-next">⚡ Aller à Arduino</a>
+</nav>
+
+
+<nav class="navigation-cours">
+  <a href="#definition">Qu'est-ce qu'un algorithme ?</a>
+  <a href="#symboles">Symboles d'algorigramme</a>
+  <a href="#structures">Structures algorithmiques</a>
+  <a href="#liens-colibri">Lien avec les programmes COLIBRI</a>
+</nav>
+
+<section id="definition">
+  <h2>Qu'est-ce qu'un algorithme ?</h2>
+  <div class="box">
+    <p>
+      Un <strong>algorithme</strong> est une suite finie d'instructions permettant de résoudre un problème
+      de manière précise et non ambiguë.
+    </p>
+    <p>
+      On peut le décrire :
+      <ul>
+        <li>soit sous forme de texte structuré (pseudo-code) ;</li>
+        <li>soit sous forme graphique grâce à un <strong>algorigramme</strong>.</li>
+      </ul>
+    </p>
+  </div>
+</section>
+
+<section id="symboles">
+  <h2>Symboles d'algorigramme</h2>
+
+  <p>Les principaux symboles utilisés sont :</p>
+
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse:collapse; width:100%; text-align:left;">
+  <thead>
+    <tr style="background:#f0f0f0;">
+      <th>Symbole</th>
+      <th>Nom (FR)</th>
+      <th>Nom (EN / norme)</th>
+      <th>Rôle dans l'algorithme</th>
+      <th>Exemple d'utilisation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Ovale / rectangle aux coins arrondis</td>
+      <td>Début / Fin</td>
+      <td>Terminator</td>
+      <td>Indique le point de départ et le point d'arrêt de l’algorithme.</td>
+      <td>« Début », « Fin du programme ».</td>
+    </tr>
+    <tr>
+      <td>Rectangle</td>
+      <td>Instruction / Traitement</td>
+      <td>Process</td>
+      <td>Une action à effectuer, un calcul, une affectation, etc.</td>
+      <td><code>X ← X + 1</code>, « Allumer voyant », « Lancer pompe ».</td>
+    </tr>
+    <tr>
+      <td>Losange</td>
+      <td>Test / Décision</td>
+      <td>Decision</td>
+      <td>Question logique qui oriente le flux selon Oui / Non (Vrai / Faux).</td>
+      <td>« Chaudière vide ? », « Réservoir plein ? ».</td>
+    </tr>
+    <tr>
+      <td>Parallélogramme</td>
+      <td>Entrée / Sortie</td>
+      <td>Input / Output</td>
+      <td>Lecture ou affichage de données.</td>
+      <td>« Lire capteur », « Afficher température ».</td>
+    </tr>
+    <tr>
+      <td>Flèche</td>
+      <td>Flèche de liaison</td>
+      <td>Flowline / Arrow</td>
+      <td>Indique le sens de lecture et la suite du traitement.</td>
+      <td>Du « Début » vers la première instruction, puis vers le test, etc.</td>
+    </tr>
+    <tr>
+      <td>Cercle ou petit connecteur</td>
+      <td>Connecteur</td>
+      <td>On-page / Off-page connector</td>
+      <td>Relie deux parties éloignées d’un même algorigramme.</td>
+      <td>Flot qui continue sur une autre page ou plus loin dans le schéma.</td>
+    </tr>
+    <tr>
+      <td>Rectangle à double bords verticaux</td>
+      <td>Sous-programme / Procédure</td>
+      <td>Subroutine / Predefined process</td>
+      <td>Appel d’un traitement détaillé ailleurs.</td>
+      <td>« TournerColonne() », « GérerBoisson() ».</td>
+    </tr>
+    <tr>
+      <td>Symbole « boucle » (annotation près d’une flèche)</td>
+      <td>Boucle / Itération</td>
+      <td>Loop / Iteration</td>
+      <td>Précise qu’une séquence se répète sous condition.</td>
+      <td>« Tant que », « Répéter…jusqu’à », « Pour i = 1 à 4 ».</td>
+    </tr>
+  </tbody>
+</table>
+
+
+  <p>
+    Un algorigramme est parcouru du haut vers le bas, en suivant les flèches
+    et en choisissant une branche à chaque test (OUI / NON).
+  </p>
+</section>
+
+<section id="structures">
+
+	<div class="image-cadre">
+	  <img src="../images/img7.jpg" alt="tableau des symboles">
+	</div>
+
+
+  <h2>Structures algorithmiques de base</h2>
+
+  <h3>1. Séquence d'instructions</h3>
+  <div class="box">
+    <p>
+      On exécute les instructions les unes après les autres, dans l'ordre où elles sont écrites.
+    </p>
+    <p><em>Pseudo-code :</em></p>
+    <pre><code>Début
+  instruction1
+  instruction2
+Fin
+    </code></pre>
+    <p class="exemple">
+      Exemple COLIBRI : allumer le voyant de fonctionnement (Programme 1).<br>
+      Variable : voyantfonctionnement.<br>
+      Algorithme :<br>
+      Début<br>
+      &nbsp;&nbsp;voyantfonctionnement &larr; 1<br>
+      Fin
+    </p>
+  </div>
+
+  <h3>2. Structure alternative simple : Si...Alors</h3>
+  <div class="box">
+    <p>
+	
+      On teste une condition. <br> Si elle est vraie, on exécute une ou plusieurs instructions. <br> 
+      Si elle est fausse, on ne fait rien.
+	 
+    </p>
+    <p><em>Pseudo-code :</em></p>
+    <pre><code>Si condition vraie ALORS
+  instruction1
+FinSi
+    </code></pre>
+    <p class="exemple">
+      Exemple COLIBRI (Programme 2) :<br>
+      Si la chaudière est vide <br> ALORS démarrer la pompe.
+    </p>
+  </div>
+
+  <h3>3. Structure Si...Alors...Sinon</h3>
+  <div class="box">
+    <p>
+      On teste une condition. Si elle est vraie, on exécute un premier bloc d'instructions,
+      sinon on exécute un autre bloc.
+    </p>
+    <p><em>Pseudo-code :</em></p>
+    <pre><code>Si condition vraie ALORS
+  instruction1
+SINON
+  instruction2
+FinSi
+    </code></pre>
+    <p class="exemple">
+      Exemple COLIBRI (Programme 3) :<br>
+      Si la chaudière est vide ALORS <br> démarrer la pompe,<br>
+      SINON <br> arrêter la pompe (éventuellement après un délai). <br> FinSi
+    </p>
+  </div>
+
+  <h3>4. Boucles : répéter plusieurs fois</h3>
+
+  <h4>a) Tant que...Faire</h4>
+  <div class="box">
+    <p>
+      On répète une séquence tant que la condition reste vraie.
+    </p>
+    <p><em>Pseudo-code :</em></p>
+    <pre><code>Tant que condition vraie Faire
+  instruction1
+  instruction2
+FinTantQue
+    </code></pre>
+    <p class="exemple">
+      Exemple COLIBRI (Programme 4) :<br>
+      Tant que le réservoir n'est pas plein, faire <br> fonctionner la pompe de remplissage.<br> FinTantQue
+    </p>
+  </div>
+
+  <h4>b) Répéter...Jusqu'à</h4>
+  <div class="box">
+    <p>
+      On répète une séquence au moins une fois, puis on s'arrête quand la condition devient vraie.
+    </p>
+    <p><em>Pseudo-code :</em></p>
+    <pre><code>Répéter
+  instruction1
+  instruction2
+Jusqu'à condition vraie
+    </code></pre>
+    <p class="exemple">
+      Exemple COLIBRI (Programme 5) :<br>
+      <strong>répéter </strong> <br>Chauffer l'eau <br><strong>jusqu’à</strong> ce que la température haute soit atteinte.
+    </p>
+  </div>
+
+  <h4>c) Pour...Faire (répéter n fois)</h4>
+  <div class="box">
+    <p>
+      On répète une séquence un nombre de fois connu à l'avance à l'aide d'une variable de comptage.
+    </p>
+    <p><em>Pseudo-code :</em></p>
+    <pre><code>Initialiser i
+POUR i variant de valeur_initiale à valeur_finale FAIRE
+  instruction
+FinPour
+    </code></pre>
+    <p class="exemple">
+      Exemple COLIBRI (Programme 6) :<br>
+      Faire avancer le moteur pas à pas 4 fois pour positionner un gobelet sous le distributeur.
+    </p>
+  </div>
+</section>
+
+<section id="liens-colibri">
+  <h2>Lien direct avec la programmation Arduino</h2>
+  <p>
+    Dans les pages d'activité COLIBRI, chaque algorithme est traduit en programme Arduino.
+    Pour passer de l'algorithme au code, on utilise notamment :
+  </p>
+  <ul>
+    <li>les structures <code>if</code>, <code>while</code>, <code>do...while</code>, <code>for</code> en C/C++ ;</li>
+    <li>les fonctions Arduino <code>digitalRead</code>, <code>digitalWrite</code>, <code>delay</code>.</li>
+  </ul>
+  <p>
+    Tu peux revenir sur cette page chaque fois que tu dois reconnaître
+    le type de structure à utiliser pour résoudre un des programmes COLIBRI.
+  </p>
+
+  <p>
+    Aller vers les activités :
+  </p>
+  <nav class="navigation-cours">
+  
+  <a href="index.html">🏠 Accueil</a>
+  <a href="../p1-voyant.html" >1️⃣ Voyant</a>
+  <a href="../p2-chaudiere.html" >2️⃣-3️⃣ Chaudière</a>
+  <a href="../p4-reservoir.html">4️⃣-5️⃣ Réservoir</a>
+  <a href="../test-analogique.html">🔢 Analogique</a>
+  <a href="../pour-aller-plus-loin.html">⭐ Plus loin</a>
+  
+  </nav>
+</section>
+
+</body>
+</html>

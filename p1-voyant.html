@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Programme 1 – Allumer un voyant</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.4; margin: 0; padding: 0 1rem 2rem; }
+    header { background:#003366; color:white; padding:1rem; margin:0 -1rem 1rem; }
+    h1, h2, h3 { margin-top:1rem; }
+    code { background:#f4f4f4; padding:0 0.15rem; }
+    table { border-collapse: collapse; width:100%; margin:0.8rem 0; }
+    th, td { border:1px solid #ccc; padding:0.5rem; vertical-align:top; }
+    th { background:#f0f0f0; }
+    .box { border:1px solid #ccc; padding:0.8rem; margin:0.8rem 0; border-radius:4px; }
+    .exemple { background:#f9f9ff; }
+    nav a { margin-right:0.8rem; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Programme 1 – Allumer un voyant</h1>
+  <p>Séquence COLIBRI – Découverte Arduino et passage algorithme &rarr; programme</p>
+</header>
+<nav class="navigation-cours">
+  <a href="index.html">🏠 Accueil</a>
+  <a href="p1-voyant.html" class="active">1️⃣ Voyant</a>
+  <a href="p2-chaudiere.html">2️⃣-3️⃣ Chaudière</a>
+  <a href="p4-reservoir.html">4️⃣-5️⃣ Réservoir</a>
+  <a href="test-analogique.html">🔢 Analogique</a>
+  <a href="pour-aller-plus-loin.html">⭐ Plus loin</a>
+
+  <!-- Boutons ressources -->
+  <a href="ressources/algorigramme.html" class="btn-ressource">📚 Algorigramme</a>
+  <a href="ressources/arduino.html" class="btn-ressource">⚡ Arduino</a>
+</nav>
+
+<!--
+<nav>
+  <a href="#situation">1. Situation</a>
+  <a href="#algorithme">2. Algorithme</a>
+  <a href="#code">3. Programme Arduino</a>
+  <a href="#tests">4. Tests et questions</a>
+</nav>
+-->
+<section id="situation">
+  <h2>1. Situation et cahier des charges</h2>
+
+  <div class="box">
+    <h3>Machine à café COLIBRI</h3>
+    <p>
+      Le COLIBRI est une machine qui prépare et distribue des boissons chaudes à la demande.
+      Son système interne doit indiquer visuellement qu'il est en fonctionnement.
+    </p>
+    <p><strong>Cahier des charges :</strong> allumer un voyant de signalisation de fonctionnement du COLIBRI.</p>
+  </div>
+
+  <div class="box">
+    <h3>Matériel</h3>
+    <ul>
+      <li>Carte Arduino + carte Grove.</li>
+      <li>Module LED rouge branché sur la broche <strong>D3</strong> (carte Grove).</li>
+      <li>Logiciel Arduino IDE.</li>
+    </ul>
+    <p class="exemple">
+      La LED rouge joue le rôle du voyant de fonctionnement de la machine COLIBRI. 
+	  
+	  <img src="images/img2.jpg" 
+     alt="Schéma synoptique du COLIBRI" 
+     style="width: 100%; 
+            max-width: 400px; 
+            height: auto; 
+            display: block; 
+            margin: 20px auto; 
+            border: 2px solid #3498db; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+
+    </p>
+  </div>
+
+  <p>
+    Ressources utiles :
+    <a href="algorigramme.html">Algorithmes / Algorigrammes</a> –
+    <a href="arduino-memo.html">Ressource Arduino</a>
+  </p>
+</section>
+
+<section id="algorithme">
+  <h2>2. Algorithme du voyant</h2>
+
+  <div class="box">
+    <h3>Rappel – structure séquentielle</h3>
+    <p>
+      On exécute les instructions les unes après les autres : Début &rarr; instructions &rarr; Fin. 
+    </p>
+    <pre><code>Début
+  instruction1
+  instruction2
+Fin
+    </code></pre>
+  </div>
+
+  <h3>2.1. À compléter : algorithme en langage naturel</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Cahier des charges</th>
+        <th>Algorithme (pseudo-code)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          Allumer un voyant de signalisation de fonctionnement du COLIBRI. 
+        </td>
+        <td>
+          <!-- zone élève -->
+          Début<br>
+          &nbsp;&nbsp;Déclarer une variable représentant le voyant<br>
+          &nbsp;&nbsp;Mettre le voyant à l'état <strong>allumé</strong><br>
+          Fin
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>2.2. Algorigramme (à dessiner sur feuille ou dans le DR)</h3>
+  <div class="box">
+    <p>
+      Représenter l'algorithme précédent sous forme d'algorigramme (Début, instruction « allumer voyant », Fin). 
+    </p>
+  </div>
+</section>
+
+<section id="code">
+  <h2>3. Programme Arduino à compléter</h2>
+
+  <div class="box">
+    <h3>Correspondance algorithme &rarr; Arduino</h3>
+    <ul>
+      <li>Variable « voyantfonctionnement » &rarr; <code>int ledrouge = 3;</code> (broche numérique 3). </li>
+      <li>Mettre le voyant à l'état allumé &rarr; <code>digitalWrite(ledrouge, HIGH);</code>. </li>
+      <li>Avant cela, déclarer la broche comme sortie avec <code>pinMode(ledrouge, OUTPUT);</code>. </li>
+    </ul>
+  </div>
+
+  <h3>3.1. Squelette de programme</h3>
+  <p>Compléter les zones en pointillés dans le code ci‑dessous.</p>
+
+<pre><code>// Déclaration de la variable : la broche 3 s'appelle ledrouge
+int ledrouge = 3;   // &lt;-- ligne donnée
+
+void setup() {
+  // A faire  : déclarer ledrouge comme une sortie
+  // pinMode(   ,    );
+}
+
+void loop() {
+  // A faire  : allumer la LED de fonctionnement
+  // digitalWrite(   ,    );
+}
+</code></pre>
+
+  <h3>3.2. Coup de pouce</h3>
+  <details>
+    <summary>Afficher un coup de pouce</summary>
+    <p>
+      Dans <code>setup()</code> : utiliser <code>pinMode(ledrouge, OUTPUT);</code> pour déclarer la broche comme sortie. <br>
+      Dans <code>loop()</code> : utiliser <code>digitalWrite(ledrouge, HIGH);</code> pour allumer la LED. 
+    </p>
+  </details>
+
+  <h3>3.3. Correction possible</h3>
+  <details>
+    <summary>Afficher une correction possible</summary>
+<pre><code>int ledrouge = 3;   // la broche 3 de la carte s'appelle ledrouge
+
+void setup() {
+  pinMode(ledrouge, OUTPUT);      // ledrouge est une sortie
+}
+
+void loop() {
+  digitalWrite(ledrouge, HIGH);   // allumer le voyant de fonctionnement
+}
+</code></pre>
+  </details>
+</section>
+
+<section id="tests">
+  <h2>4. Tests et questions</h2>
+
+  <div class="box">
+    <h3>4.1. Tester le programme</h3>
+    <ol>
+      <li>Brancher la carte Arduino + carte Grove et le module LED sur D3.</li>
+      <li>Créer un nouveau programme dans l'IDE Arduino et copier le code complété.</li>
+      <li>Vérifier, puis téléverser le programme dans la carte. </li>
+      <li>Observer le voyant : doit‑il clignoter ou rester allumé en permanence ?</li>
+    </ol>
+  </div>
+
+  <div class="box">
+    <h3>4.2. Question sur la déclaration de variable</h3>
+    <p>
+      Modifier le programme en supprimant la ligne <code>int ledrouge = 3;</code> et en remplaçant
+      partout dans le programme <code>ledrouge</code> par <code>3</code>. 
+    </p>
+    <ol>
+      <li>Tester le nouveau programme.</li>
+      <li>Fonctionne‑t‑il ?</li>
+      <li>Conclure sur la fonction de la ligne <code>int ledrouge = 3;</code> (nommer une broche avec une variable). </li>
+    </ol>
+  </div>
+
+  <p>
+    Ressources : <a href="arduino-memo.html#structure">Structure d'un programme Arduino</a> –
+    <a href="algorigramme.html#structures">Structures algorithmiques</a>
+  </p>
+</section>
+
+<nav class="navigation-cours">
+  <a href="index.html">⬅ Retour à l’accueil</a>
+  <a href="p4-reservoir.html">➡ Fiche suivante</a>
+</nav>
+
+
+</body>
+</html>

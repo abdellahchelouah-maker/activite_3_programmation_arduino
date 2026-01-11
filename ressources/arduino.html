@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Ressource – Arduino et carte Grove</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.4; margin: 0; padding: 0 1rem 2rem; }
+    header { background:#00663a; color:white; padding:1rem; margin:0 -1rem 1rem; }
+    h1, h2, h3 { margin-top:1rem; }
+    code { background:#f4f4f4; padding:0 0.15rem; }
+    .box { border:1px solid #ccc; padding:0.8rem; margin:0.8rem 0; border-radius:4px; }
+    table { border-collapse: collapse; width:100%; margin:0.8rem 0; }
+    th, td { border:1px solid #ccc; padding:0.5rem; vertical-align:top; }
+    th { background:#f0f0f0; }
+    nav a { margin-right:0.8rem; }
+    .exemple { background:#f9f9ff; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Ressource Arduino</h1>
+  <p>Carte Arduino, carte Grove et programmation pour la séquence COLIBRI</p>
+</header>
+<nav class="navigation-ressources">
+  <a href="../p4-reservoir.html" class="btn-ressource-prev">⬅ Fiche précédente</a>
+  <a href="algorigramme.html" class="btn-ressource-next">📚 Aller à Algorigramme</a>
+</nav>
+
+<nav>
+  <a href="#carte">1. Carte Arduino et Grove</a>
+  <a href="#logiciel">2. Logiciel Arduino</a>
+  <a href="#structure">3. Structure d'un programme</a>
+  <a href="#memo">4. Mémo des instructions</a>
+  <a href="#reference">4. Fiche référence de l'Arduino</a>
+</nav>
+
+<section id="carte">
+  <h2>1. Carte Arduino et carte Grove</h2>
+
+  <h3>1.1. Les parties importantes de la carte</h3>
+ 
+<!-- Tableau avec une image à gauche associée à sa légende : bloc div class = "box" 
+
+
+-->
+<div class="box" style="display: flex; align-items: flex-start; gap: 20px; flex-wrap: wrap;">
+
+  <!-- Légende à gauche -->
+  <div style="min-width: 120px; text-align: left; font-weight: bold; color: #333;">
+    Présentation de la carte RedBoard
+  </div>
+
+  <!-- Image + description à droite -->
+  <div>
+    <img src="../images/img9.jpg" 
+         alt="Microcontrôleur Arduino" 
+         style="max-width: 300px; width: 100%; height: auto; border: 2px solid #3498db; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom: 10px;">
+    
+    <ol>
+      <li><strong>Microcontrôleur</strong> : le « cerveau » qui exécute le programme.</li>
+      <li><strong>Port USB</strong> : permet de téléverser le programme et d'alimenter la carte en 5 V.</li>
+      <li><strong>Alimentation externe</strong> : entrée 7–15 V transformée en 5 V pour la carte.</li>
+      <li><strong>LED intégrées</strong> : indiquent l'état de la carte (alimentation, activité).</li>
+      <li><strong>Entrées / Sorties numériques (D2, D3, ...)</strong> : pour brancher boutons, LED, buzzer, etc.</li>
+      <li><strong>Entrées analogiques (A0, A1, ...)</strong> : pour lire des tensions (potentiomètre).</li>
+    </ol>
+  </div>
+
+</div>
+
+
+  <h3>1.2. Carte Grove et modules</h3>
+  <div class="box">
+    <p>
+      La carte Grove se branche sur l'Arduino et permet de connecter facilement des modules
+      (capteurs et actionneurs) à l'aide de câbles 4 fils.
+    </p>
+    <ul>
+      <li>Fils jaune et blanc : signaux logiques (par exemple D2, D3, D8...).</li>
+      <li>Fils rouge et noir : alimentation 5 V et 0 V pour le module.</li>
+      <li>Les modules utilisés dans la séquence : LED, boutons poussoirs, buzzer, moteur vibration.</li>
+    </ul>
+    <p class="exemple">
+      Exemple : sur un connecteur noté D5 sur la carte Grove, le fil jaune peut être connecté
+      à l'entrée 5 et le fil blanc à l'entrée 6 de l'Arduino.
+    </p>
+  </div>
+
+<!-- Début du bloc images côte à côte -->
+<div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin: 20px 0;">
+
+  <!-- Première image -->
+  <div style="border: 2px solid #3498db; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); padding: 10px; max-width: 45%;">
+    <img src="../images/img10.jpg" 
+         alt="Description image 9" 
+         style="width: 100%; height: auto; display: block; border-radius: 4px;">
+    <p style="text-align: center; margin-top: 8px;">Légende image 9</p>
+  </div>
+
+  <!-- Deuxième image -->
+  <div style="border: 2px solid #3498db; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); padding: 10px; max-width: 45%;">
+    <img src="../images/img11.jpg" 
+         alt="Description image 10" 
+         style="width: 100%; height: auto; display: block; border-radius: 4px;">
+    <p style="text-align: center; margin-top: 8px;">Légende image 10</p>
+  </div>
+
+</div>
+<!-- Fin du bloc images côte à côte -->
+
+
+</section>
+
+<section id="logiciel">
+  <h2>2. Logiciel Arduino IDE</h2>
+
+  <h3>2.1. Démarrer un nouveau programme</h3>
+  <div class="box">
+    <ol>
+      <li>Lancer le logiciel Arduino.</li>
+      <li>Menu <em>Fichier &gt; Nouveau</em> pour créer un programme.</li>
+      <li>Enregistrer sous un nom clair (ex. <code>VosNom_led</code>).</li>
+    </ol>
+  </div>
+
+<!-- Début du bloc images côte à côte -->
+<div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin: 20px 0;">
+
+  <!-- Première image -->
+  <div style="border: 2px solid #3498db; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); padding: 10px; max-width: 45%;">
+    <img src="../images/img12.png" 
+         alt="Description image 12" 
+         style="width: 100%; height: auto; display: block; border-radius: 4px;">
+    <p style="text-align: center; margin-top: 8px;">Légende image 9</p>
+  </div>
+ 
+</div>
+<!-- Fin du bloc images côte à côte -->
+
+  <h3>2.2. Compiler et téléverser</h3>
+  <div class="box">
+    <ol>
+      <li>Brancher la carte Arduino en USB (les LED s'allument quelques instants).</li>
+      <li>Vérifier que la carte sélectionnée est bien <strong>Arduino Uno</strong> (menu Outils &gt; Type de carte).</li>
+      <li>Choisir le bon port série (menu Outils &gt; Port).</li>
+      <li>Cliquez sur le bouton <strong>Vérifier</strong> (✔) pour compiler.</li>
+      <li>Cliquez sur le bouton <strong>Téléverser</strong> (→) pour envoyer le programme dans la carte.</li>
+    </ol>
+    <p class="exemple">
+      Si le téléversement ne fonctionne pas, changer de port USB ou de port série dans le menu Outils.
+    </p>
+  </div>
+
+<!-- Début du bloc images côte à côte -->
+<div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin: 20px 0;">
+
+  <!-- Première image -->
+  <div style="border: 2px solid #3498db; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); padding: 10px; max-width: 45%;">
+    <img src="../images/img13.jpg" 
+         alt="Description image 13" 
+         style="width: 100%; height: auto; display: block; border-radius: 4px;">
+    <p style="text-align: center; margin-top: 8px;">Sélectionner carte Arduino Uno</p>
+  </div>
+
+  <!-- Deuxième image -->
+  <div style="border: 2px solid #3498db; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); padding: 10px; max-width: 45%;">
+    <img src="../images/img14.jpg" 
+         alt="Description image 14" 
+         style="width: 100%; height: auto; display: block; border-radius: 4px;">
+    <p style="text-align: center; margin-top: 8px;">Vérifier pour compiler</p>
+  </div>
+
+  <!-- Troisième image -->
+  <div style="border: 2px solid #3498db; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); padding: 10px; max-width: 45%;">
+    <img src="../images/img15.jpg" 
+         alt="Description image 15" 
+         style="width: 100%; height: auto; display: block; border-radius: 4px;">
+    <p style="text-align: center; margin-top: 8px;">Si le téléversement ne fonctionne pas</p>
+  </div>
+</div>
+<!-- Fin du bloc images côte à côte -->  
+
+</section>
+
+<section id="structure">
+  <h2>3. Structure d'un programme Arduino</h2>
+
+  <div class="box">
+    <p>Un programme Arduino comporte toujours :</p>
+    <ul>
+      <li>des <strong>déclarations</strong> de constantes et variables ;</li>
+      <li>une fonction <code>void setup()</code> exécutée une seule fois au démarrage ;</li>
+      <li>une fonction <code>void loop()</code> exécutée en boucle tant que la carte est alimentée.</li>
+    </ul>
+  </div>
+  
+<!-- Début du bloc images côte à côte -->
+<div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin: 20px 0;">
+
+  <!-- Première image -->
+  <div style="border: 2px solid #3498db; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); padding: 10px; max-width: 45%;">
+    <img src="../images/img18.jpg" 
+         alt="Description image 9" 
+         style="width: 100%; height: auto; display: block; border-radius: 4px;">
+    <p style="text-align: center; margin-top: 8px;">Structuration d'un programme Arduino</p>
+  </div>
+
+
+</div>
+<!-- Fin du bloc images côte à côte -->
+
+  <h3>3.1. Exemple minimal</h3>
+  <pre><code>// Déclaration des variables
+int ledrouge = 3;    // la LED est branchée sur la broche numérique 3
+
+void setup() {       // fonction d'initialisation
+  pinMode(ledrouge, OUTPUT);    // on déclare ledrouge comme une sortie
+}
+
+void loop() {        // fonction principale, répétée en boucle
+  digitalWrite(ledrouge, HIGH); // allumer la LED
+}
+  </code></pre>
+
+  <p class="exemple">
+    Dans le Programme 1 COLIBRI, on utilise cette structure pour allumer le voyant de fonctionnement.
+  </p>
+</section>
+
+<section id="memo">
+  <h2>4. Mémo des instructions Arduino utilisées</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Rôle</th>
+        <th>Instruction / fonction</th>
+        <th>Exemple pour COLIBRI</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Déclarer une broche en entrée ou en sortie</td>
+        <td><code>pinMode(broche, INPUT);</code><br><code>pinMode(broche, OUTPUT);</code></td>
+        <td class="exemple">
+          <code>pinMode(2, INPUT);</code> pour le bouton chaudière.<br>
+          <code>pinMode(8, OUTPUT);</code> pour la pompe (buzzer).
+        </td>
+      </tr>
+      <tr>
+        <td>Mettre une sortie à 0 ou 1 (éteindre / allumer)</td>
+        <td><code>digitalWrite(broche, LOW);</code><br><code>digitalWrite(broche, HIGH);</code></td>
+        <td class="exemple">
+          Allumer la LED de fonctionnement :<br>
+          <code>digitalWrite(3, HIGH);</code>
+        </td>
+      </tr>
+      <tr>
+        <td>Lire l'état logique d'une entrée</td>
+        <td><code>digitalRead(broche)</code></td>
+        <td class="exemple">
+          Tester si la chaudière est vide :<br>
+          <code>if (digitalRead(2) == HIGH) { ... }</code>
+        </td>
+      </tr>
+      <tr>
+        <td>Attendre un certain temps</td>
+        <td><code>delay(temps_en_ms);</code></td>
+        <td class="exemple">
+          Attendre 2 secondes avant d'arrêter la pompe :<br>
+          <code>delay(2000);</code>
+        </td>
+      </tr>
+      <tr>
+        <td>Lire une valeur analogique (0 à 1023)</td>
+        <td><code>analogRead(A0);</code></td>
+        <td class="exemple">
+          Lire la tension d'un potentiomètre sur A0 :<br>
+          <code>int N = analogRead(A0);</code>
+        </td>
+      </tr>
+      <tr>
+        <td>Boucle conditionnelle</td>
+        <td><code>while (condition) { ... }</code><br><code>do { ... } while (condition);</code></td>
+        <td class="exemple">
+          Tant que le réservoir n’est pas plein, garder la pompe en marche.
+        </td>
+      </tr>
+      <tr>
+        <td>Boucle avec compteur</td>
+        <td><code>for (int i = 0; i &lt; n; i++) { ... }</code></td>
+        <td class="exemple">
+          Faire tourner la colonne de gobelets de 4 pas :<br>
+          <code>for (int i = 0; i &lt; 4; i++) { Tournercolonne(); }</code>
+        </td>
+      </tr>
+      <tr>
+        <td>Choix multiple</td>
+        <td><code>switch (x) { case ...: ... }</code></td>
+        <td class="exemple">
+          Choisir la boisson selon la lettre saisie au clavier série :<br>
+          <code>switch (boisson) { case 'c': ... }</code>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    Cette page sert de mémo : lors des activités COLIBRI, tu peux revenir ici pour
+    retrouver rapidement la syntaxe des instructions à utiliser.
+  </p>
+
+  <p>
+    Lien vers la ressource algorithmes / algorigrammes :
+    <a href="algorigramme.html">Algorithmes et algorigrammes</a>
+  </p>
+</section>
+
+<section id="reference">
+  <h2>5. La référence ARDUINO</h2>
+
+  <h3>Elle contient la description des éléments du langage Arduino./h3>
+  <div class="box">
+	<p> Pour programmer, il suffit de copier les exemples de "la référence", puis de les adapter à votre problème. </p>
+  </div>
+
+<!-- Début du bloc images côte à côte -->
+<div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin: 20px 0;">
+
+  <!-- Première image -->
+  <div style="border: 2px solid #3498db; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); padding: 10px; max-width: 45%;">
+    <img src="../images/img17.jpg" 
+         alt="Description image 12" 
+         style="width: 100%; height: auto; display: block; border-radius: 4px;">
+    <p style="text-align: center; margin-top: 8px;">Accès à la référence du langage par l'aide</p>
+  </div>
+  
+    <!-- Deuxième image -->
+  <div style="border: 2px solid #3498db; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); padding: 10px; max-width: 45%;">
+    <img src="../images/img17.jpg" 
+         alt="Description image 17" 
+         style="width: 100%; height: auto; display: block; border-radius: 4px;">
+    <p style="text-align: center; margin-top: 8px;">Fiche référence Arduino</p>
+  </div>
+ 
+</div>
+</section>
+
+</body>
+</html>

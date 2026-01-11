@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Pour aller plus loin – Programmes 6 et 7</title>
+	<link rel="stylesheet" href="css/style.css">
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 40px; }
+        h1, h2, h3 { color: #2c3e50; }
+        .bloc { border-left: 4px solid #3498db; padding: 10px 20px; margin: 20px 0; background: #f7f9fa; }
+        table { border-collapse: collapse; width: 100%; margin: 15px 0; }
+        table, th, td { border: 1px solid #ccc; }
+        th, td { padding: 8px; text-align: left; }
+        code, pre { background: #eee; padding: 10px; display: block; border-radius: 4px; }
+    </style>
+</head>
+
+<body>
+<nav class="navigation-cours">
+  <a href="index.html">🏠 Accueil</a>
+  <a href="p1-voyant.html">1️⃣ Voyant</a>
+  <a href="p2-chaudiere.html">2️⃣-3️⃣ Chaudière</a>
+  <a href="p4-reservoir.html">4️⃣-5️⃣ Réservoir</a>
+  <a href="test-analogique.html">🔢 Analogique</a>
+  <a href="pour-aller-plus-loin.html" class="active">⭐ Plus loin</a>
+
+  <!-- Boutons ressources -->
+  <a href="ressources/algorigramme.html" class="btn-ressource">📚 Algorigramme</a>
+  <a href="ressources/arduino.html" class="btn-ressource">⚡ Arduino</a>
+</nav>
+
+
+<h1>Pour aller plus loin</h1>
+
+<!-- PROGRAMME 6 -->
+<h2>Programme 6 – Structure itérative : Répéter n fois (Pour…Faire)</h2>
+
+<div class="bloc">
+    <h3>Cahier des charges</h3>
+    <p>
+        Si l’opérateur appuie sur le bouton café, allumer le voyant de mise en préparation et actionner le moteur pas à pas de la colonne de gobelet.
+        Le sous-programme <strong>Tourner_colonne()</strong> permet de faire faire 1 pas au moteur relié à la colonne de gobelets.
+    </p>
+    <ul>
+        <li>Il faut <strong>4 pas</strong> pour positionner le gobelet sous le distributeur.</li>
+        <li>Entre chaque pas, attendre <strong>1 seconde</strong>.</li>
+        <li>Après 3 secondes, éteindre le voyant de préparation.</li>
+    </ul>
+</div>
+
+<h3>Matériel à connecter</h3>
+<table>
+    <tr><th>Élément</th><th>Broche Arduino</th></tr>
+    <tr><td>Bouton café (Grove button)</td><td>D2</td></tr>
+    <tr><td>Voyant préparation (LED)</td><td>D3</td></tr>
+    <tr><td>Moteur colonne (vibration motor)</td><td>D8</td></tr>
+</table>
+
+<h3>Variables à déclarer</h3>
+<ul>
+    <li><code>demande_cafe</code></li>
+    <li><code>voyant_preparation</code></li>
+    <li><code>moteur_colonne</code></li>
+</ul>
+
+<h3>Algorithme attendu</h3>
+<pre>
+Début
+  Si demande_cafe = 1 alors
+      Allumer voyant_preparation
+      Pour i allant de 1 à 4
+          Tourner_colonne()
+          Attendre 1 seconde
+      FinPour
+      Attendre 3 secondes
+      Éteindre voyant_preparation
+  FinSi
+Fin
+</pre>
+
+<h3>Structure Arduino à utiliser</h3>
+<pre>
+for (int i = 0; i < 4; i++) {
+    // actions
+}
+</pre>
+
+<p><em>Faire vérifier votre travail par le professeur.</em></p>
+
+<hr>
+
+<!-- PROGRAMME 7 -->
+<h2>Programme 7 – Structure alternative multiple : Switch…case</h2>
+
+<div class="bloc">
+    <h3>Principe</h3>
+    <p>
+        L’instruction <strong>switch…case</strong> permet de choisir une action en fonction de la valeur d’une variable.
+        Elle remplace avantageusement une série de <em>Si…Alors…Sinon</em> lorsque les cas sont nombreux.
+    </p>
+</div>
+
+<h3>Cahier des charges</h3>
+<p>Le choix de la boisson se fait via le clavier du moniteur série :</p>
+<ul>
+    <li>Si l’utilisateur tape <strong>c</strong> → activer l’électrovanne café pendant 2 secondes</li>
+    <li>Si l’utilisateur tape <strong>t</strong> → activer l’électrovanne thé pendant 2 secondes</li>
+    <li>Si l’utilisateur tape <strong>l</strong> → activer l’électrovanne lait pendant 2 secondes</li>
+</ul>
+
+<h3>Matériel à connecter</h3>
+<table>
+    <tr><th>Électrovanne</th><th>Broche Arduino</th></tr>
+    <tr><td>EV café (LED rouge)</td><td>D3</td></tr>
+    <tr><td>EV thé (LED bleue)</td><td>D6</td></tr>
+    <tr><td>EV lait (LED verte)</td><td>D7</td></tr>
+</table>
+
+<h3>Variables à déclarer</h3>
+<ul>
+    <li><code>cafe</code>, <code>the</code>, <code>chocolat</code> (si nécessaire pour extension)</li>
+    <li><code>EVcafe</code>, <code>EVthe</code>, <code>EVlait</code></li>
+</ul>
+
+<h3>Structure Arduino à utiliser</h3>
+<pre>
+switch (Serial.read()) {
+    case 'c':
+        // activer EV café
+        break;
+
+    case 't':
+        // activer EV thé
+        break;
+
+    case 'l':
+        // activer EV lait
+        break;
+
+    default:
+        // aucun choix valide
+        break;
+}
+</pre>
+
+<p><em>Faire vérifier votre travail par le professeur.</em></p>
+
+<nav class="navigation-cours">
+  <a href="index.html">⬅ Retour à l’accueil</a>
+  <a href="p4-reservoir.html">➡ Fiche suivante</a>
+</nav>
+
+
+</body>
+</html>

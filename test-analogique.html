@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head><meta charset="UTF-8"><title>Entrée analogique – Test CAN</title>
+<style>body{font-family:Arial;line-height:1.4}code{background:#f4f4f4;padding:.2rem}.box{border:1px solid #ccc;padding:1rem;margin:1rem 0}</style>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header style="background:#cc6600;color:white;padding:1rem">
+<h1>Entrée analogique – Test CAN</h1>
+</header>
+
+<nav class="navigation-cours">
+  <a href="index.html">🏠 Accueil</a>
+  <a href="p1-voyant.html">1️⃣ Voyant</a>
+  <a href="p2-chaudiere.html">2️⃣-3️⃣ Chaudière</a>
+  <a href="p4-reservoir.html">4️⃣-5️⃣ Réservoir</a>
+  <a href="test-analogique.html" class="active">🔢 Analogique</a>
+  <a href="pour-aller-plus-loin.html">⭐ Plus loin</a>
+
+  <!-- Boutons ressources -->
+  <a href="ressources/algorigramme.html" class="btn-ressource">📚 Algorigramme</a>
+  <a href="ressources/arduino.html" class="btn-ressource">⚡ Arduino</a>
+</nav>
+
+
+<div class="box">
+<h2>Principe</h2>
+<p>Les microcontrôleurs ne lisent que des signaux numériques (0/1). Un signal analogique (tension variable 0-5V) est converti en valeur numérique <strong>0 à 1023</strong> par un convertisseur analogique-numérique (CAN).</p>
+</div>
+
+<div class="box">
+<h3>Matériel</h3>
+<ul>
+<li>Potentiomètre branché sur <strong>A0</strong></li>
+<li>Volmètre pour mesurer Ue</li>
+</ul>
+</div>
+
+<h2>Programme de test</h2>
+<pre><code>int N; // mot numérique en sortie du CAN (0 à 1023)
+
+void setup() {
+  Serial.begin(9600); // ouvrir moniteur série
+}
+
+void loop() {
+  N = analogRead(A0); // lire l'entrée analogique A0
+  Serial.println(N);  // afficher N sur moniteur série
+  delay(500);         // attendre 500 ms
+}
+</code></pre>
+
+<div class="box">
+<h3>Test et relevés</h3>
+<ol>
+<li>Téléverser le programme et ouvrir le moniteur série (loupe).</li>
+<li>Faire varier le potentiomètre et noter N pour différentes tensions Ue.</li>
+<li>Tracer la caractéristique N = f(Ue) dans ton DR.</li>
+</ol>
+</div>
+
+<p><a href="arduino-memo.html#memo">Mémo analogRead</a></p>
+
+<nav class="navigation-cours">
+  <a href="index.html">⬅ Retour à l’accueil</a>
+  <a href="p4-reservoir.html">➡ Fiche suivante</a>
+</nav>
+
+
+</body>
+</html>
